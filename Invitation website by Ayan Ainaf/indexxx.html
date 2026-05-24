@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>
+    Rayan & Simran | Royal Wedding Invitation
+  </title>
+
+  <!-- GOOGLE FONTS -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- TAILWIND -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- CONFETTI -->
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#FFFAF0;
+      color:#1A1A1A;
+      overflow-x:hidden;
+    }
+
+    h1,h2,h3,h4{
+      font-family:'Playfair Display',serif;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      height:100vh;
+      overflow:hidden;
+    }
+
+    .hero video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+
+      background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.65)
+      );
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-subtitle{
+      color:#D4AF37;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      font-size:12px;
+      margin-bottom:20px;
+    }
+
+    .hero-title{
+      color:white;
+      font-size:4rem;
+      font-weight:700;
+      line-height:1;
+      margin-bottom:20px;
+    }
+
+    .hero-desc{
+      color:rgba(255,255,255,0.85);
+      max-width:700px;
+      line-height:1.9;
+      font-size:18px;
+    }
+
+    /* SCROLL */
+
+    .scroll-indicator{
+      margin-top:50px;
+      width:34px;
+      height:55px;
+      border:2px solid white;
+      border-radius:40px;
+      position:relative;
+    }
+
+    .scroll-indicator::before{
+
+      content:'';
+
+      position:absolute;
+
+      width:7px;
+      height:7px;
+
+      background:white;
+
+      border-radius:50%;
+
+      left:50%;
+      transform:translateX(-50%);
+
+      animation:scrollAnim 1.5s infinite;
+    }
+
+    @keyframes scrollAnim{
+
+      0%{
+        opacity:0;
+        top:10px;
+      }
+
+      50%{
+        opacity:1;
+      }
+
+      100%{
+        opacity:0;
+        top:30px;
+      }
+
+    }
+
+    /* SECTION */
+
+    .section{
+      padding:100px 20px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .section-title{
+      font-size:4rem;
+      margin-bottom:20px;
+      text-align:center;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      color:#B08D1F;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      font-size:13px;
+      margin-bottom:20px;
+    }
+
+    /* COUNTDOWN */
+
+    .countdown-section{
+      background:#111111;
+    }
+
+    .count-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      margin-top:50px;
+    }
+
+    .count-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(212,175,55,0.25);
+      backdrop-filter:blur(14px);
+      border-radius:26px;
+      padding:30px 15px;
+      text-align:center;
+    }
+
+    .count-number{
+      font-size:3rem;
+      font-weight:700;
+      color:#D4AF37;
+    }
+
+    .count-label{
+      margin-top:10px;
+      color:white;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+
+    /* CARDS */
+
+    .luxury-card{
+      background:white;
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:0 15px 60px rgba(0,0,0,0.06);
+      border:1px solid rgba(212,175,55,0.15);
+      transition:0.5s;
+    }
+
+    .luxury-card:hover{
+      transform:translateY(-10px);
+    }
+
+    /* BUTTON */
+
+    .gold-btn{
+      background:
+      linear-gradient(
+        135deg,
+        #D4AF37,
+        #f7dd82
+      );
+
+      color:#1A1A1A;
+
+      min-height:52px;
+
+      border-radius:999px;
+
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:14px 28px;
+
+      font-weight:700;
+
+      text-decoration:none;
+
+      transition:0.4s;
+    }
+
+    .gold-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 35px rgba(212,175,55,0.35);
+    }
+
+    /* INPUTS */
+
+    input,
+    select,
+    textarea{
+
+      width:100%;
+
+      padding:16px;
+
+      border-radius:20px;
+
+      border:1px solid rgba(212,175,55,0.2);
+
+      outline:none;
+
+      font-size:15px;
+
+      font-family:'Inter',sans-serif;
+    }
+
+    textarea{
+      resize:none;
+    }
+
+    /* MUSIC BUTTON */
+
+    .music-toggle{
+
+      position:fixed;
+
+      right:20px;
+      bottom:20px;
+
+      width:60px;
+      height:60px;
+
+      border-radius:999px;
+
+      background:#D4AF37;
+
+      color:#1A1A1A;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      font-size:24px;
+
+      cursor:pointer;
+
+      z-index:9999;
+
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    /* BLESSING */
+
+    .blessing-wall{
+      display:grid;
+      gap:20px;
+    }
+
+    .blessing-card{
+
+      background:white;
+
+      border-radius:26px;
+
+      padding:25px;
+
+      box-shadow:0 10px 40px rgba(0,0,0,0.05);
+
+      border:1px solid rgba(212,175,55,0.15);
+
+      animation:fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn{
+
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .hero-title{
+        font-size:3.2rem;
+      }
+
+      .section-title{
+        font-size:2.8rem;
+      }
+
+      .count-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .count-number{
+        font-size:2.2rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+
+      <source
+        src="./assets/garden.mp4"
+        type="video/mp4"
+      >
+
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <p class="hero-subtitle">
+        Barakallahu Lakuma Wa Baraka Alaikuma
+      </p>
+
+      <h1 class="hero-title">
+        Rayan & Simran
+      </h1>
+
+      <p class="hero-desc">
+        A Royal Celebration Of Love, Faith & Forever.
+      </p>
+
+      <div class="scroll-indicator"></div>
+
+    </div>
+
+  </section>
+
+  <!-- COUNTDOWN -->
+
+  <section class="countdown-section section">
+
+    <div class="container text-center">
+
+      <p class="section-subtitle text-[#D4AF37]">
+        Wedding Countdown
+      </p>
+
+      <h2 class="section-title text-white">
+        Our Special Day Begins In
+      </h2>
+
+      <div
+        id="countdown"
+        class="count-grid"
+      ></div>
+
+    </div>
+
+  </section>
+
+  <!-- DETAILS -->
+
+  <section class="section bg-[#FFFAF0]">
+
+    <div class="container">
+
+      <p class="section-subtitle">
+        Wedding Invitation
+      </p>
+
+      <h2 class="section-title">
+        Together With Their Families
+      </h2>
+
+      <p class="max-w-3xl mx-auto text-center text-lg leading-9 text-[#555] mb-16">
+
+        We warmly invite you to celebrate the sacred union of
+        <strong>Rayan</strong>
+        and
+        <strong>Simran Khanam</strong>
+        as they begin a beautiful journey together.
+
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-10">
+
+        <!-- GROOM -->
+
+        <div class="luxury-card p-10">
+
+          <h3 class="text-4xl mb-5">
+            The Groom
+          </h3>
+
+          <h4 class="text-3xl font-semibold mb-4">
+            Rayan
+          </h4>
+
+          <p class="leading-8 text-[#555]">
+            S/o Mrs. & Mr. Naseer Ahmmed Rajesab Ainaf
+          </p>
+
+        </div>
+
+        <!-- BRIDE -->
+
+        <div class="luxury-card p-10">
+
+          <h3 class="text-4xl mb-5">
+            The Bride
+          </h3>
+
+          <h4 class="text-3xl font-semibold mb-4">
+            Simran Khanam
+          </h4>
+
+          <p class="leading-8 text-[#555]">
+            D/o Janab Ayub Khan Jahagirdar
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- VENUES -->
+
+  <section class="section bg-[#fffdf8]">
+
+    <div class="container">
+
+      <p class="section-subtitle">
+        Venue Locations
+      </p>
+
+      <h2 class="section-title">
+        Celebrate With Us
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-10 mt-16">
+
+        <!-- NIKAH -->
+
+        <div class="luxury-card">
+
+          <iframe
+            src="https://maps.google.com/maps?q=Hazrat%20Bilal%20Masjid%20Hubli&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            class="w-full h-[320px] border-0"
+            loading="lazy"
+          ></iframe>
+
+          <div class="p-8">
+
+            <p class="section-subtitle text-left mb-3">
+              Nikaah Ceremony
+            </p>
+
+            <h3 class="text-4xl mb-4">
+              21 May 2026
+            </h3>
+
+            <p class="leading-8 text-[#555] mb-6">
+
+              11:45 AM <br>
+
+              Hazrat Bilal Masjid,
+              Anand Nagar,
+              Old Hubli.
+
+            </p>
+
+            <a
+              href="https://maps.google.com/?q=Hazrat+Bilal+Masjid+Old+Hubli"
+              target="_blank"
+              class="gold-btn"
+            >
+              Open Google Maps
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- VALIMA -->
+
+        <div class="luxury-card">
+
+          <iframe
+            src="https://maps.google.com/maps?q=HSF%20Garden%20Hubli&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            class="w-full h-[320px] border-0"
+            loading="lazy"
+          ></iframe>
+
+          <div class="p-8">
+
+            <p class="section-subtitle text-left mb-3">
+              Valima Reception
+            </p>
+
+            <h3 class="text-4xl mb-4">
+              22 May 2026
+            </h3>
+
+            <p class="leading-8 text-[#555] mb-6">
+
+              From 1:45 PM <br>
+
+              H.S.F Garden,
+              Gudihal Road,
+              Hubli.
+
+            </p>
+
+            <a
+              href="https://maps.app.goo.gl/u3UeFhF4vUPrLg7N9"
+              target="_blank"
+              class="gold-btn"
+            >
+              Open Google Maps
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- AI BLESSINGS -->
+
+  <section class="section bg-[#111111] text-white">
+
+    <div class="container">
+
+      <p class="section-subtitle text-[#D4AF37]">
+        Interactive Guestbook
+      </p>
+
+      <h2 class="section-title text-white">
+        AI Blessings
+      </h2>
+
+      <div class="grid lg:grid-cols-2 gap-14 mt-16">
+
+        <!-- FORM -->
+
+        <div>
+
+          <div class="space-y-5">
+
+            <input
+              id="guestName"
+              type="text"
+              placeholder="Your Name"
+              class="text-black"
+            >
+
+            <select
+              id="tone"
+              class="text-black"
+            >
+
+              <option value="royal">
+                Royal & Elegant
+              </option>
+
+              <option value="sweet">
+                Sweet & Warm
+              </option>
+
+              <option value="funny">
+                Funny
+              </option>
+
+            </select>
+
+            <button
+              onclick="generateBlessing()"
+              class="gold-btn w-full"
+            >
+              Generate Blessing
+            </button>
+
+            <textarea
+              id="generatedBlessing"
+              rows="6"
+              class="text-black"
+              placeholder="Your blessing appears here..."
+            ></textarea>
+
+            <button
+              onclick="postBlessing()"
+              class="gold-btn w-full"
+            >
+              Post Blessing
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- WALL -->
+
+        <div>
+
+          <h3 class="text-4xl mb-8">
+            Blessing Wall
+          </h3>
+
+          <div
+            id="blessingWall"
+            class="blessing-wall"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GIFTS -->
+
+  <section class="section bg-[#FFFAF0]">
+
+    <div class="container text-center">
+
+      <p class="section-subtitle">
+        Our Favorite Registry & Gifts
+      </p>
+
+      <h2 class="section-title">
+        Gift Registry
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-10 mt-16">
+
+        <!-- AMAZON -->
+
+        <a
+          href="https://www.amazon.in/giftcard"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="luxury-card p-12 block"
+        >
+
+          <div class="text-6xl mb-6">
+            🎁
+          </div>
+
+          <h3 class="text-4xl mb-5">
+            Amazon Gift Cards
+          </h3>
+
+          <p class="leading-8 text-[#555]">
+
+            Send your blessings digitally through Amazon India.
+
+          </p>
+
+        </a>
+
+        <!-- FLIPKART -->
+
+        <a
+          href="https://www.flipkart.com/the-gift-card-store"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="luxury-card p-12 block"
+        >
+
+          <div class="text-6xl mb-6">
+            💝
+          </div>
+
+          <h3 class="text-4xl mb-5">
+            Flipkart Gift Cards
+          </h3>
+
+          <p class="leading-8 text-[#555]">
+
+            A thoughtful digital gesture for the newlyweds.
+
+          </p>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="bg-[#111111] text-white py-14 text-center px-6">
+
+    <h2 class="text-5xl mb-5">
+      Rayan & Simran
+    </h2>
+
+    <p class="text-white/70 leading-8 max-w-2xl mx-auto">
+
+      We look forward to celebrating this beautiful occasion with your presence,
+      love, and blessings.
+
+    </p>
+
+    <p class="mt-10 text-sm text-[#D4AF37]">
+
+      Designed & Developed with ♥ by Ayan Ainaf
+
+    </p>
+
+  </footer>
+
+  <!-- MUSIC BUTTON -->
+
+  <div
+    class="music-toggle"
+    id="musicToggle"
+  >
+    ♫
+  </div>
+
+  <!-- AUDIO -->
+
+  <audio
+    id="weddingMusic"
+    loop
+  >
+
+    <source
+      src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b7f8f.mp3?filename=arabic-background-music-110597.mp3"
+      type="audio/mpeg"
+    >
+
+  </audio>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // HERO ANIMATIONS
+
+  gsap.from(".hero-subtitle",{
+    opacity:0,
+    y:30,
+    duration:1.2
+  });
+
+  gsap.from(".hero-title",{
+    opacity:0,
+    y:60,
+    duration:2,
+    delay:0.3
+  });
+
+  gsap.from(".hero-desc",{
+    opacity:0,
+    y:40,
+    duration:1.5,
+    delay:0.6
+  });
+
+  // COUNTDOWN
+
+  const countdown =
+    document.getElementById('countdown');
+
+  const weddingDate =
+    new Date("May 21, 2026 11:45:00").getTime();
+
+  function updateCountdown(){
+
+    const now =
+      new Date().getTime();
+
+    const distance =
+      weddingDate - now;
+
+    // EVENT STARTED
+
+    if(distance < 0){
+
+      countdown.innerHTML = `
+
+        <div style="
+          grid-column:1/-1;
+          text-align:center;
+          padding:60px 20px;
+          background:rgba(255,255,255,0.05);
+          border:1px solid rgba(212,175,55,0.25);
+          border-radius:30px;
+          backdrop-filter:blur(14px);
+        ">
+
+          <h2 style="
+            font-size:3rem;
+            color:#D4AF37;
+            margin-bottom:20px;
+            font-family:'Playfair Display',serif;
+          ">
+            ✨ The Wedding Celebration Has Begun ✨
+          </h2>
+
+          <p style="
+            color:white;
+            font-size:18px;
+            line-height:1.8;
+          ">
+            Thank you for being part of our beautiful journey 💍
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+    const days =
+      Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours =
+      Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+      );
+
+    const minutes =
+      Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+      );
+
+    const seconds =
+      Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+      );
+
+    countdown.innerHTML = `
+
+      <div class="count-card">
+        <div class="count-number">${days}</div>
+        <div class="count-label">Days</div>
+      </div>
+
+      <div class="count-card">
+        <div class="count-number">${hours}</div>
+        <div class="count-label">Hours</div>
+      </div>
+
+      <div class="count-card">
+        <div class="count-number">${minutes}</div>
+        <div class="count-label">Minutes</div>
+      </div>
+
+      <div class="count-card">
+        <div class="count-number">${seconds}</div>
+        <div class="count-label">Seconds</div>
+      </div>
+
+    `;
+
+  }
+
+  updateCountdown();
+
+  setInterval(updateCountdown,1000);
+
+  // MUSIC SYSTEM
+
+  const music =
+    document.getElementById('weddingMusic');
+
+  const musicToggle =
+    document.getElementById('musicToggle');
+
+  let musicStarted = false;
+
+  music.volume = 0.25;
+
+  async function startMusic(){
+
+    if(musicStarted) return;
+
+    try{
+
+      await music.play();
+
+      musicStarted = true;
+
+      musicToggle.innerHTML = '♫';
+
+    }catch(error){
+
+      console.log("Autoplay blocked.");
+
+    }
+
+  }
+
+  document.addEventListener(
+    'click',
+    startMusic,
+    { once:true }
+  );
+
+  document.addEventListener(
+    'touchstart',
+    startMusic,
+    { once:true }
+  );
+
+  musicToggle.addEventListener('click',async()=>{
+
+    try{
+
+      if(music.paused){
+
+        await music.play();
+
+        musicToggle.innerHTML='♫';
+
+      }else{
+
+        music.pause();
+
+        musicToggle.innerHTML='✕';
+
+      }
+
+    }catch(error){
+
+      console.log(error);
+
+    }
+
+  });
+
+  // BLESSING TEMPLATES
+
+  const templates = {
+
+    royal:[
+      "May Allah bless your marriage with endless love, prosperity, and peace. — ",
+      "May your union be filled with barakah and royal happiness. — "
+    ],
+
+    sweet:[
+      "Wishing you both a lifetime filled with warmth and joy. — ",
+      "May your love story shine forever beautifully. — "
+    ],
+
+    funny:[
+      "Marriage unlocked: teamwork, food sharing & unlimited selfies. — ",
+      "May your WiFi and your love stay strong forever. — "
+    ]
+
+  };
+
+  // GENERATE BLESSING
+
+  function generateBlessing(){
+
+    const name =
+      document.getElementById('guestName').value
+      || 'A Well Wisher';
+
+    const tone =
+      document.getElementById('tone').value;
+
+    const arr =
+      templates[tone];
+
+    const blessing =
+      arr[Math.floor(Math.random()*arr.length)] + name;
+
+    document.getElementById(
+      'generatedBlessing'
+    ).value = blessing;
+
+  }
+
+  // POST BLESSING
+
+  function postBlessing(){
+
+    const text =
+      document.getElementById(
+        'generatedBlessing'
+      ).value;
+
+    if(!text) return;
+
+    confetti({
+
+      particleCount:180,
+      spread:120,
+
+      origin:{
+        y:0.6
+      },
+
+      colors:[
+        '#D4AF37',
+        '#f7dd82',
+        '#ffd7e2',
+        '#fff0c7'
+      ]
+
+    });
+
+    const wall =
+      document.getElementById(
+        'blessingWall'
+      );
+
+    const card =
+      document.createElement('div');
+
+    card.className =
+      'blessing-card';
+
+    card.innerHTML = `
+      <p class="leading-8 text-[#555]">
+        ${text}
+      </p>
+    `;
+
+    wall.prepend(card);
+
+    let blessings =
+      JSON.parse(
+        localStorage.getItem('blessings')
+        || '[]'
+      );
+
+    blessings.unshift(text);
+
+    localStorage.setItem(
+      'blessings',
+      JSON.stringify(blessings)
+    );
+
+    document.getElementById(
+      'generatedBlessing'
+    ).value='';
+
+  }
+
+  // LOAD BLESSINGS
+
+  window.onload = function(){
+
+    const blessings =
+      JSON.parse(
+        localStorage.getItem('blessings')
+        || '[]'
+      );
+
+    const wall =
+      document.getElementById(
+        'blessingWall'
+      );
+
+    blessings.forEach((text)=>{
+
+      const card =
+        document.createElement('div');
+
+      card.className =
+        'blessing-card';
+
+      card.innerHTML = `
+        <p class="leading-8 text-[#555]">
+          ${text}
+        </p>
+      `;
+
+      wall.appendChild(card);
+
+    });
+
+  }
+
+</script>
+
+</body>
+
+</html>
