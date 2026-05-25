@@ -1,3 +1,4 @@
+  <img width="1896" height="959" alt="1" src="https://github.com/user-attachments/assets/be5881dd-4f96-4318-a065-2f64b4d370e2" />
 # ✨ Royal Wedding Invitation Website
 
 A luxurious and fully interactive wedding invitation website designed and developed for the wedding celebration of **Rayan & Simran**.  
@@ -7,7 +8,7 @@ This project combines cinematic visuals, elegant UI/UX, responsive design, inter
 
 # 🌐 Live Demo
 
-
+https://invitation-by-rayan-pre.netlify.app/
 
 ---
 
@@ -22,24 +23,25 @@ https://youtu.be/iCakgzTbHXY
 ## Hero Section
 
 An immersive cinematic landing section with luxury typography, animated entrance effects, and a fullscreen wedding background video.
+<img width="1896" height="959" alt="1" src="https://github.com/user-attachments/assets/4cc1f9b8-c17b-4f10-b93a-982a84ff2721" />
 
-![Hero Section](Invitation_website_by_Ayan_Ainaf./screenshots/1.png)
+
 
 ---
 
-## Wedding Countdown Experience
+## Wedding Countdown Experience<img width="1895" height="957" alt="2" src="https://github.com/user-attachments/assets/9731b854-0736-4e81-9160-4f3bc93406bc" />
+
 
 A premium live countdown section designed with glassmorphism cards and dynamic animations for the wedding celebration timer.
-
-![Countdown Section](./screenshots/2.png)
 
 ---
 
 ## Wedding Details & Venue Information
 
 Elegant invitation sections displaying bride & groom details along with integrated Google Maps venue locations for Nikah and Valima ceremonies.
+<img width="1887" height="952" alt="3" src="https://github.com/user-attachments/assets/8a6c064c-c33e-4157-ad28-0ad67cbfa689" />
 
-![Wedding Details](./screenshots/3.png)
+
 
 ---
 
@@ -51,16 +53,17 @@ Guests can generate beautiful AI-style blessings in multiple tones including:
 - Funny
 
 The blessings are dynamically added to the interactive blessing wall with celebration confetti effects.
+<img width="1888" height="949" alt="4" src="https://github.com/user-attachments/assets/15b50501-7eb0-4704-a456-154b079b6541" />
 
-![AI Blessing Wall](./screenshots/4.png)
 
----
 
 ## Premium Gift Registry Experience
 
 Modern registry section allowing guests to digitally send blessings and gifts through integrated platforms.
+<img width="1893" height="958" alt="5" src="https://github.com/user-attachments/assets/6f7e0910-e391-4b99-8665-84fabdbe2532" />
 
-![Gift Registry](./screenshots/5.png)
+
+<img width="1891" height="956" alt="6" src="https://github.com/user-attachments/assets/40ae4bbb-b13b-4627-a58d-9fc6496744f5" />
 
 ---
 
